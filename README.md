@@ -18,9 +18,9 @@ diff &amp; merge algorithm realized with Javascript
 
 ### Compare
 
-	var s1 = 'a,bc',
-		s2 = 'a,bcd',
-		splitter = ',';
+	var s1 = 'abc',
+		s2 = 'abcd',
+		splitter = '';
 
 	var compareResult = compare(s1, s2, splitter);
 
@@ -34,4 +34,4 @@ diff &amp; merge algorithm realized with Javascript
 
 ### Algorithm
 
-	http://en.wikipedia.org/wiki/Levenshtein_distance
+http://en.wikipedia.org/wiki/Levenshtein_distance
