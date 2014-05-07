@@ -3,7 +3,7 @@ diff-merge
 
 diff &amp; merge algorithm realized with Javascript
 
-## Usage
+### Usage
 
  - nodejs
 
@@ -16,7 +16,7 @@ diff &amp; merge algorithm realized with Javascript
 		<script type="text/javascript" src="../lib/compare.js"></script>
 		<script type="text/javascript" src="../lib/merge.js"></script>
 
-## Compare
+### Compare
 
 	var s1 = 'a,bc',
 		s2 = 'a,bcd',
@@ -24,10 +24,14 @@ diff &amp; merge algorithm realized with Javascript
 
 	var compareResult = compare(s1, s2, splitter);
 
-## merge
+### Merge
 
 	var s3 = merge(s1, compareResult);
 
-## test
+### Test
 
 	test/test.html
+
+### Algorithm
+
+	http://en.wikipedia.org/wiki/Levenshtein_distance
