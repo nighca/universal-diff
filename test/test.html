@@ -22,31 +22,46 @@ if(i===0){for(e in t.par){t.pars.push([e,t.par[e]].join("="))}}else{for(e=0;e<i;
 <script type="text/javascript" src="../lib/myers-compare.js"></script>
 <script type="text/javascript" src="../lib/merge.js"></script>
 <script type="text/javascript">
-    var test = function(s1, s2, splitter){
-        //console.log(s1, s2);
-
+    var test = function(s1, s2, splitter, silently){
         var t = Date.now();
 
         var compareResult = compare(s1, s2, splitter);
 
-        console.debug(Date.now() - t + ' ms');
-        console.log(compareResult);
+        if(!silently){
+            console.log(s1, s2);
+            console.debug(Date.now() - t + ' ms');
+            console.log(compareResult);
+        }
 
         if(merge(s1, compareResult) !== s2){
-            console.error('wrong');
+            window.errorPair = [s1, s2];
+            console.warn(window.errorPair);
+            throw new Error('Wrong! see in window.errorPair.');
         }else{
             console.info('ok');
         }
     };
 
-    /*
     // do random tests
-    for(var l = 1000; l > 0; l--){
-        test((Math.random() + '').slice(-l), (Math.random() + '').slice(-l));
-    }
-    console.info('FINISHED');
-    */
-
+    /*var makeStr = function(len){
+        var s = '';
+        while(s.length < len){
+            s += Math.random();
+        }
+        return s.slice(0, len);
+    };
+    var randomTestTimer = setInterval(function(){
+        for(var l = 200; l > 0; l--){
+            try{
+                test(makeStr(l), makeStr(l), '', true);
+            }catch(e){
+                clearInterval(randomTestTimer);
+                throw e;
+            }
+        }
+        console.info('FINISHED');
+    }, 1000);*/
+    
     // do test with given input
     var in1 = document.getElementById('in1'),
         in2 = document.getElementById('in2');
