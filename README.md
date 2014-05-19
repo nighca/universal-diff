@@ -3,6 +3,8 @@ diff-merge
 
 diff &amp; merge algorithm realized with Javascript
 
+There are two compare methods: simple/myers(used as default), while the latter performs better in most situations(O(ND)).
+
 ### Usage
 
  - nodejs
@@ -13,7 +15,7 @@ diff &amp; merge algorithm realized with Javascript
 
  - browser
  
-		<script type="text/javascript" src="../lib/compare.js"></script>
+		<script type="text/javascript" src="../lib/myers-compare.js"></script>
 		<script type="text/javascript" src="../lib/merge.js"></script>
 
 ### Compare
@@ -34,4 +36,6 @@ diff &amp; merge algorithm realized with Javascript
 
 ### Algorithm
 
-http://en.wikipedia.org/wiki/Levenshtein_distance
+SIMPLE: http://en.wikipedia.org/wiki/Levenshtein_distance
+
+MYERS': https://neil.fraser.name/software/diff_match_patch/myers.pdf
