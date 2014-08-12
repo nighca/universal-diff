@@ -15,8 +15,12 @@ There are two compare methods: simple/myers(used as default), while the latter p
 
  - browser
  
-		<script type="text/javascript" src="../lib/myers-compare.js"></script>
-		<script type="text/javascript" src="../lib/merge.js"></script>
+		<script type="text/javascript" src="../dist/diff.min.js"></script>
+		<script type="text/javascript">
+			var _ = window.diff,
+				compare = _.compare,
+				merge = _.merge;
+		</script>
 
 ### Compare
 
