@@ -1,0 +1,22 @@
+{
+  "name": "diff-merge",
+  "main": "dist/index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nighca/diff-merge",
+  "authors": [
+    "nighca <nighca@live.cn>"
+  ],
+  "description": "diff & merge algorithm realized with Javascript",
+  "keywords": [
+    "diff",
+    "merge"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
