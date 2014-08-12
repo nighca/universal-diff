@@ -1,0 +1,33 @@
+{
+  "name": "diff-merge",
+  "version": "1.0.0",
+  "description": "diff & merge algorithm realized with Javascript",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^0.1.1",
+    "gulp": "^3.8.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-uglify": "^0.3.1"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nighca/diff-merge.git"
+  },
+  "keywords": [
+    "diff",
+    "merge"
+  ],
+  "author": "nighca",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/nighca/diff-merge/issues"
+  },
+  "homepage": "https://github.com/nighca/diff-merge"
+}

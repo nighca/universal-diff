@@ -1,4 +1,11 @@
 /*
+ * head part of browser-dist file
+ * By: nighca@live.cn
+ */
+
+(function(global, undefined){
+
+/*
  * Compare using myers' LCS/SES algorithm
  * ( https://neil.fraser.name/software/diff_match_patch/myers.pdf )
  * By: nighca@live.cn
@@ -135,3 +142,35 @@ var compare = function(cnt1, cnt2, splitter){
 if(typeof module === "object" && typeof module.exports === "object"){
     module.exports = compare;
 }
+/*
+ * Merge diff results to origin scequence
+ * By: nighca@live.cn
+ */
+
+var merge = function(cnt, compareResult){
+    var splitter = compareResult.splitter,
+        diff = compareResult.diff,
+        result = cnt.split(splitter);
+
+    for(var i = diff.length - 1, item; i >= 0; i--){
+        item = diff[i];
+        result.splice.apply(result, item);
+    }
+
+    return result.join(splitter);
+};
+
+if(typeof module === "object" && typeof module.exports === "object"){
+    module.exports = merge;
+}
+/*
+ * tail part of browser-dist file
+ * By: nighca@live.cn
+ */
+
+global.diff = {
+    compare: compare,
+    merge: merge
+};
+
+})(this);
