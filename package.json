@@ -1,6 +1,6 @@
 {
   "name": "diff-merge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "diff & merge algorithm realized with Javascript",
   "main": "index.js",
   "directories": {
