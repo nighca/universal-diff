@@ -1,15 +1,7 @@
-/*
- * head part of browser-dist file
- * By: nighca@live.cn
- */
+/*! diff-merge v1.0.1 | nighca(nighca@live.cn) | Apache License(2.0) */
 
 (function(global, undefined){
 
-/*
- * Compare using myers' LCS/SES algorithm
- * ( https://neil.fraser.name/software/diff_match_patch/myers.pdf )
- * By: nighca@live.cn
- */
 
 var compare = function(cnt1, cnt2, splitter){
     var SPLITTER = typeof splitter === 'string' ? splitter : '',
@@ -148,10 +140,6 @@ var compare = function(cnt1, cnt2, splitter){
 if(typeof module === "object" && typeof module.exports === "object"){
     module.exports = compare;
 }
-/*
- * Merge diff results to origin scequence
- * By: nighca@live.cn
- */
 
 var merge = function(cnt, compareResult){
     var splitter = compareResult.splitter,
@@ -169,10 +157,6 @@ var merge = function(cnt, compareResult){
 if(typeof module === "object" && typeof module.exports === "object"){
     module.exports = merge;
 }
-/*
- * tail part of browser-dist file
- * By: nighca@live.cn
- */
 
 global.diff = {
     compare: compare,
