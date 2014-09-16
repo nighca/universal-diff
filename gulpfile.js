@@ -10,7 +10,7 @@ var head = '/*! diff-merge v' + info.version + ' | ' + info.author.name + '(' + 
 
 var paths = {
     dist: 'dist',
-    scripts: ['lib/head.js', 'lib/myers-compare.js', 'lib/merge.js', 'lib/tail.js']
+    scripts: ['lib/head.js', 'lib/define.js', 'lib/core.js', 'lib/script.js', 'lib/string.js', 'lib/tail.js']
 };
 
 gulp.task('clean', function(cb) {
