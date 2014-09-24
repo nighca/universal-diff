@@ -1,4 +1,4 @@
-/*! diff-merge v1.0.1 | nighca(nighca@live.cn) | Apache License(2.0) */
+/*! universal-diff v2.0.0 | nighca(nighca@live.cn) | Apache License(2.0) */
 
 (function(global, undefined){
 
@@ -17,14 +17,20 @@ var MARK_EMPTY = -1,
     MARK_SAME = 0;
 
 
+var defaultEqual = function(a, b){
+    return a === b;
+};
+
 // caculate min-edit-script (naive)
-var naiveCompare = function(seq1, seq2){
+var naiveCompare = function(seq1, seq2, eq){
 
     var l1 = seq1.length,
         l2 = seq2.length,
         distMap = Array.apply(null, {length: l1 + 1}).map(function(){return [];}),
         stepMap = Array.apply(null, {length: l1 + 1}).map(function(){return [];}),
         i, j;
+
+    eq = eq || defaultEqual;
 
     for(i = 0; i <= l1; i++){
         for(j = 0; j <= l2; j++){
@@ -34,7 +40,7 @@ var naiveCompare = function(seq1, seq2){
                 stepMap[i][j] = i > 0 ? STEP_REMOVE : STEP_INSERT;
 
             }else{
-                var equal = seq1[i-1] === seq2[j-1],
+                var equal = eq(seq1[i-1], seq2[j-1]),
 
                     removeDist = distMap[i-1][j] + 1,
                     insertDist = distMap[i][j-1] + 1,
@@ -65,7 +71,7 @@ var naiveCompare = function(seq1, seq2){
 };
 
 // caculate min-edit-script (myers)
-var myersCompare = function(seq1, seq2){
+var myersCompare = function(seq1, seq2, eq){
 
     var N = seq1.length,
         M = seq2.length,
@@ -73,6 +79,8 @@ var myersCompare = function(seq1, seq2){
         stepMap = Array.apply(null, {length: M+N+1}).map(function(){return [];}),
         furthestReaching = [],
         dist = -1;
+
+    eq = eq || defaultEqual;
 
     furthestReaching[MAX + 1] = 0;
 
@@ -90,7 +98,7 @@ var myersCompare = function(seq1, seq2){
             y = x - k;
             stepMap[x][y] = step;
 
-            while(x < N && y < M && seq1[x] === seq2[y]){
+            while(x < N && y < M && eq(seq1[x], seq2[y])){
                 x++;
                 y++;
                 stepMap[x][y] = STEP_NOCHANGE;
@@ -158,10 +166,10 @@ var transformStepMap = function(seq1, seq2, stepMap){
 };
 
 // get edit script
-var compare = function(seq1, seq2){
+var compare = function(seq1, seq2, eq){
 
     // do compare
-    var stepMap = coreCompare(seq1, seq2);
+    var stepMap = coreCompare(seq1, seq2, eq);
 
     // transform stepMap
     var contrast = transformStepMap(seq1, seq2, stepMap),
@@ -196,8 +204,24 @@ var compare = function(seq1, seq2){
     return script;
 };
 
+// merge
+var merge = function(seq, script){
+    var result = seq.slice();
+
+    for(var i = script.length - 1, modify; i >= 0; i--){
+        modify = script[i];
+        var to = modify[2];
+        if(to){
+            modify = modify.slice(0, 2).concat(to);
+        }
+        result.splice.apply(result, modify);
+    }
+
+    return result;
+};
+
 // compare string (use splitter)
-var compareStr = function(str1, str2, splitter) {
+var compareStr = function(str1, str2, splitter){
     splitter = typeof splitter === 'string' ? splitter : '';
 
     var seq1 = str1.split(splitter),
@@ -216,7 +240,7 @@ var compareStr = function(str1, str2, splitter) {
     };
 };
 
-// merge string (add spliter bacj=k)
+// merge string (add spliter back)
 var mergeStr = function(cnt, compareResult){
     var splitter = compareResult.splitter,
         diff = compareResult.diff,
@@ -230,11 +254,25 @@ var mergeStr = function(cnt, compareResult){
     return result.join(splitter);
 };
 
-global.diff = {
+var diff = {
     coreCompare: coreCompare,
     compare: compare,
+    merge: merge,
     compareStr: compareStr,
     mergeStr: mergeStr
 };
+
+// RequireJS && SeaJS
+if(typeof define === 'function'){
+    define(function(){
+        return diff;
+    });
+
+// NodeJS
+}else if(typeof exports !== 'undefined'){
+    module.exports = diff;
+}else{
+    global.diff = diff;
+}
 
 })(this);
