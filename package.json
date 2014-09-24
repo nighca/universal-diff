@@ -1,6 +1,6 @@
 {
     "name": "universal-diff",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "universal diff & merge algorithm realized with Javascript (between arbitrary scequences)",
     "main": "dist/diff.js",
     "directories": {
