@@ -1,37 +1,35 @@
 {
-  "name": "diff-merge",
-  "version": "1.0.1",
-  "description": "diff & merge algorithm realized with Javascript",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "del": "^0.1.1",
-    "gulp": "^3.8.7",
-    "gulp-concat": "^2.3.4",
-    "gulp-replace": "^0.4.0",
-    "gulp-uglify": "^0.3.1"
-  },
-  "scripts": {
-    "test": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nighca/diff-merge.git"
-  },
-  "keywords": [
-    "diff",
-    "merge"
-  ],
-  "author": {
-    "name": "nighca",
-    "email": "nighca@live.cn"
-  },
-  "license": "Apache",
-  "bugs": {
-    "url": "https://github.com/nighca/diff-merge/issues"
-  },
-  "homepage": "https://github.com/nighca/diff-merge"
+    "name": "universal-diff",
+    "version": "2.0.0",
+    "description": "universal diff & merge algorithm realized with Javascript (between arbitrary scequences)",
+    "main": "dist/diff.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "del": "^0.1.1",
+        "gulp": "^3.8.7",
+        "gulp-concat": "^2.3.4",
+        "gulp-mocha": "^1.1.0",
+        "gulp-replace": "^0.4.0",
+        "gulp-uglify": "^0.3.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nighca/universal-diff.git"
+    },
+    "keywords": [
+        "diff",
+        "merge"
+    ],
+    "author": {
+        "name": "nighca",
+        "email": "nighca@live.cn"
+    },
+    "license": "Apache",
+    "bugs": {
+        "url": "https://github.com/nighca/universal-diff/issues"
+    },
+    "homepage": "https://github.com/nighca/universal-diff"
 }
