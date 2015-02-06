@@ -17,7 +17,7 @@ var paths = {
 // do test
 gulp.task('test', function(){
     return gulp.src(paths.tests, {read: false})
-        .pipe(mocha());
+        .pipe(mocha({ignoreLeaks: false}));
 });
 
 // clean dist folder
