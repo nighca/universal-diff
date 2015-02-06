@@ -1,4 +1,4 @@
-/*! universal-diff v2.0.1 | nighca(nighca@live.cn) | Apache License(2.0) */
+/*! universal-diff v2.0.2 | nighca(nighca@live.cn) | Apache License(2.0) */
 
 (function(global, undefined){
 
